@@ -13,5 +13,6 @@ public class JFramePong extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle("Pong");
         this.setLocationRelativeTo(null);
+
     }
 }
