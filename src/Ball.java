@@ -1,7 +1,7 @@
 import java.awt.*;
 
 public class Ball {
-    int xCoords,yCoords,xChange,yChange,velocity,width;
+    int xCoords,yCoords,xChange,yChange,velocity,width,ballSpeed;
 
     public Ball(int xCoords,int yCoords,int xChange, int yChange,int velocity,int width){
         this.xCoords=xCoords;
@@ -10,6 +10,7 @@ public class Ball {
         this.yChange=yChange;
         this.velocity=velocity;
         this.width=width;
+        ballSpeed=velocity;
 
     }
     public void paint(Graphics g){
@@ -23,15 +24,9 @@ public class Ball {
         if(yCoords <= tLimit){
             yChange*=-1;
         }
-        if(xCoords >= 1240){
-            xChange*=-1;
-        }
-        if(xCoords <= 0){
-            xChange*=-1;
-        }
     }
     public void move(){
-        xCoords += xChange;
-        yCoords += yChange;
+        xCoords += xChange * ballSpeed;
+        yCoords += yChange * ballSpeed;
     }
 }

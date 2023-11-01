@@ -24,18 +24,18 @@ public class Racket{
     public void W_S_UP_DOWN_PRESSED(KeyEvent e){
         if(id==1){
             if(e.getKeyCode()==KeyEvent.VK_W){
-                ySpeed = -10;
+                ySpeed = -15;
             }
             if(e.getKeyCode()==KeyEvent.VK_S){
-                ySpeed = 10;
+                ySpeed = 15;
             }
         }
         else if(id==2){
             if(e.getKeyCode()==KeyEvent.VK_UP){
-                ySpeed = -10;
+                ySpeed = -15;
             }
             if(e.getKeyCode()==KeyEvent.VK_DOWN){
-                ySpeed = 10;
+                ySpeed = 15;
             }
         }
     }
@@ -57,12 +57,20 @@ public class Racket{
             }
         }
     }
-    public void boundaries(int tLimit, int bLimit){
+    public void boundaries_top_bottom(int tLimit, int bLimit){
         if(yCoords >= bLimit){
             yCoords = bLimit;
         }
         if(yCoords <= tLimit){
             yCoords = tLimit;
+        }
+    }
+    public void boundaries_ball(Ball ball){
+        if (ball.xCoords + ball.width >= xCoords && ball.xCoords <= xCoords + Const.RACKET_WIDTH) {
+            if (ball.yCoords + ball.width >= yCoords && ball.yCoords <= yCoords + Const.RACKET_HEIGHT) {
+                ball.ballSpeed +=1;
+                ball.xChange *= -1;
+            }
         }
     }
     public void move(){
