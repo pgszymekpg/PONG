@@ -58,17 +58,17 @@ public class Racket{
         }
     }
     public void boundaries_top_bottom(int tLimit, int bLimit){
-        if(yCoords >= bLimit){
+        if(yCoords > bLimit){
             yCoords = bLimit;
         }
-        if(yCoords <= tLimit){
+        if(yCoords < tLimit){
             yCoords = tLimit;
         }
     }
     public void boundaries_ball(Ball ball){
-        if (ball.xCoords + ball.width >= xCoords && ball.xCoords <= xCoords + Const.RACKET_WIDTH) {
+        if (ball.xCoords + ball.width  >= xCoords && ball.xCoords <= xCoords + Const.RACKET_WIDTH) {
             if (ball.yCoords + ball.width >= yCoords && ball.yCoords <= yCoords + Const.RACKET_HEIGHT) {
-                ball.ballSpeed +=1;
+                ball.ballSpeed +=0.2;
                 ball.xChange *= -1;
             }
         }

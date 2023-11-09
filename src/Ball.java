@@ -1,7 +1,8 @@
 import java.awt.*;
 
 public class Ball {
-    int xCoords,yCoords,xChange,yChange,velocity,width,ballSpeed;
+    int xCoords,yCoords,xChange,yChange,width;
+    double velocity,ballSpeed;
 
     public Ball(int xCoords,int yCoords,int xChange, int yChange,int velocity,int width){
         this.xCoords=xCoords;
@@ -17,14 +18,16 @@ public class Ball {
         g.setColor(Color.white);
         g.fillOval(xCoords,yCoords,width,width);
     }
-    public void boundaries(int tLimit, int bLimit){
-        if(yCoords >= bLimit){
+    public void boundaries_top_bottom(int tLimit, int bLimit){
+        if(yCoords > bLimit){
             yChange*=-1;
         }
-        if(yCoords <= tLimit){
+        if(yCoords < tLimit){
             yChange*=-1;
         }
     }
+
+
     public void move(){
         xCoords += xChange * ballSpeed;
         yCoords += yChange * ballSpeed;

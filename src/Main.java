@@ -15,12 +15,10 @@ public class Main {
         frame.setLocationRelativeTo(null);
 
 
-        Timer refresh_screen = new Timer(33, new ActionListener() {
+        Timer refresh_screen = new Timer(7,new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 game.repaint();
-                game.refresh();
-
             }
         });
         refresh_screen.start();
