@@ -1,18 +1,19 @@
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.File;
 
 public class EndScreen implements MouseListener {
     public void paint(Graphics g){
         if (Score.score1 == 10) {
             g.setColor(Color.WHITE);
             g.setFont(new Font("Courier New", Font.PLAIN, 60));
-            g.drawString("Wrong Answer, Player 1 won!", 100, 50);
+            g.drawString("Wrong Answer, Player 1 won!", 140, 50);
         }
         else if (Score.score2 == 10){
             g.setColor(Color.WHITE);
             g.setFont(new Font("Courier New", Font.PLAIN, 60));
-            g.drawString("Wrong Answer, Player 2 won!", 100, 50);
+            g.drawString("Wrong Answer, Player 2 won!", 140, 50);
 
         }
         g.setFont(new Font("Courier New", Font.PLAIN, 60));
@@ -36,6 +37,7 @@ public class EndScreen implements MouseListener {
             Gameplay.newRound();
             Gameplay.gameOver = false;
             Gameplay.quizStarted = false;
+            Gameplay.soundFile(new File("src\\sounds\\whistle.wav"));
         }
         else if (mouseOver(mouseX, mouseY, 512)) {
             System.exit(0);

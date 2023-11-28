@@ -2,6 +2,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.File;
 
 public class Menu implements MouseListener {
 
@@ -42,6 +43,7 @@ public class Menu implements MouseListener {
             Score.score2 = 0;
             Gameplay.newRound();
             Gameplay.menuChosen = false;
+            Gameplay.soundFile(new File("src\\sounds\\whistle.wav"));
         }
         else if (mouseOver(mouseX, mouseY, 612)) {
             System.exit(0);

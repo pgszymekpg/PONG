@@ -1,9 +1,13 @@
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
 
 public class Gameplay extends JPanel{
     static Ball ball;
@@ -96,6 +100,17 @@ public class Gameplay extends JPanel{
         player1 = new Racket(0,372,1);
         player2 = new Racket(1246,372,2);
     }
+    public static void soundFile(File f){
+        try {
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(f);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+            clip.start();
+        }catch (Exception e) {
+
+        }
+
+    }
     public class Listener extends KeyAdapter{
         @Override
         public void keyPressed(KeyEvent e) {
@@ -116,6 +131,7 @@ public class Gameplay extends JPanel{
         @Override
         public void mouseClicked(MouseEvent e) {
             if (!gameStarted) {
+                soundFile(new File("src\\sounds\\whistle.wav"));
                 gameStarted = true;
             }
             if(menuChosen) {

@@ -1,5 +1,7 @@
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.io.File;
+
 
 public class Racket{
     int xCoords,yCoords,ySpeed,id;
@@ -65,11 +67,12 @@ public class Racket{
             yCoords = tLimit;
         }
     }
-    public void boundaries_ball(Ball ball){
+    public void boundaries_ball(Ball ball) {
         if (ball.xCoords + ball.width  >= xCoords && ball.xCoords  <= xCoords + 20) {
             if (ball.yCoords + ball.width >= yCoords && ball.yCoords  <= yCoords + 130) {
                 ball.ballSpeed +=0.2;
                 ball.xChange *= -1;
+                Gameplay.soundFile(new File("src\\sounds\\pingpong1.wav"));
             }
         }
     }
