@@ -1,13 +1,18 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+/*
+        SCREEN_WIDTH = 1280;
+        SCREEN_HEIGHT = 1024;
+        BALL_WIDTH = 25;
+        RACKET_WIDTH = 20;
+        RACKET_HEIGHT = 130;
+*/
 public class Main {
     static JFrame frame = new JFrame("Pong");
     public static void main(String[] args) {
         Gameplay game = new Gameplay();
-        frame.setSize(Const.SCREEN_WIDTH,Const.SCREEN_HEIGHT);
+        frame.setSize(1280,1024);
         frame.setResizable(false);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.add(game);

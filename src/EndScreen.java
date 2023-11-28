@@ -1,27 +1,23 @@
 import java.awt.*;
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class Menu implements MouseListener {
-
-    public Menu() {
-    }
-
-    public void paint(Graphics g) {
-        g.setColor(Color.WHITE);
-        g.setFont(new Font("Courier New", Font.PLAIN, 80));
-        g.drawString("Menu", 515, 212);
-        g.setFont(new Font("Courier New", Font.PLAIN, 60));
-        g.drawString("Resume", 515, 412);
-        g.drawString("Restart", 515, 512);
-        g.drawString("Quit", 515, 612);
-    }
-
-    public void ESC_PRESSED(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-            Gameplay.menuChosen = true;
+public class EndScreen implements MouseListener {
+    public void paint(Graphics g){
+        if (Score.score1 == 10) {
+            g.setColor(Color.WHITE);
+            g.setFont(new Font("Courier New", Font.PLAIN, 60));
+            g.drawString("Wrong Answer, Player 1 won!", 100, 50);
         }
+        else if (Score.score2 == 10){
+            g.setColor(Color.WHITE);
+            g.setFont(new Font("Courier New", Font.PLAIN, 60));
+            g.drawString("Wrong Answer, Player 2 won!", 100, 50);
+
+        }
+        g.setFont(new Font("Courier New", Font.PLAIN, 60));
+        g.drawString("Restart", 515, 412);
+        g.drawString("Quit", 515, 512);
     }
     boolean mouseOver(int mouseX, int mouseY, int optionY) {
         if (mouseX >= 515 && mouseX <= 765 && mouseY >= optionY - 40 && mouseY <= optionY + 20){
@@ -35,15 +31,13 @@ public class Menu implements MouseListener {
         int mouseY = e.getY();
 
         if (mouseOver(mouseX, mouseY, 412)) {
-            Gameplay.menuChosen = false;
-        }
-        else if (mouseOver(mouseX, mouseY, 512)) {
             Score.score1 = 0;
             Score.score2 = 0;
             Gameplay.newRound();
-            Gameplay.menuChosen = false;
+            Gameplay.gameOver = false;
+            Gameplay.quizStarted = false;
         }
-        else if (mouseOver(mouseX, mouseY, 612)) {
+        else if (mouseOver(mouseX, mouseY, 512)) {
             System.exit(0);
         }
     }

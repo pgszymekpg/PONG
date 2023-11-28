@@ -13,11 +13,11 @@ public class Racket{
     public void paint(Graphics g){
         if(id==1){
             g.setColor(Color.CYAN);
-            g.fillRect(xCoords,yCoords,Const.RACKET_WIDTH,Const.RACKET_HEIGHT);
+            g.fillRect(xCoords,yCoords,20,130);
         }
         else if(id==2){
             g.setColor(Color.GREEN);
-            g.fillRect(xCoords,yCoords,Const.RACKET_WIDTH,Const.RACKET_HEIGHT);
+            g.fillRect(xCoords,yCoords,20,130);
         }
     }
 
@@ -66,8 +66,8 @@ public class Racket{
         }
     }
     public void boundaries_ball(Ball ball){
-        if (ball.xCoords + ball.width  >= xCoords && ball.xCoords <= xCoords + Const.RACKET_WIDTH) {
-            if (ball.yCoords + ball.width >= yCoords && ball.yCoords <= yCoords + Const.RACKET_HEIGHT) {
+        if (ball.xCoords + ball.width  >= xCoords && ball.xCoords  <= xCoords + 20) {
+            if (ball.yCoords + ball.width >= yCoords && ball.yCoords  <= yCoords + 130) {
                 ball.ballSpeed +=0.2;
                 ball.xChange *= -1;
             }

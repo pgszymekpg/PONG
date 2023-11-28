@@ -2,7 +2,6 @@ import java.awt.*;
 
 public class Score {
     static int score1,score2;
- ;
     public void paint(Graphics g){
         g.setColor(Color.WHITE);
         g.setFont(new Font("Courier New",Font.PLAIN,60));

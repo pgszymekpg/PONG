@@ -2,16 +2,15 @@ import java.awt.*;
 
 public class Ball {
     int xCoords,yCoords,xChange,yChange,width;
-    double velocity,ballSpeed;
+    double ballSpeed;
 
-    public Ball(int xCoords,int yCoords,int xChange, int yChange,int velocity,int width){
+    public Ball(int xCoords,int yCoords,int xChange, int yChange,double ballSpeed,int width){
         this.xCoords=xCoords;
         this.yCoords=yCoords;
         this.xChange=xChange;
         this.yChange=yChange;
-        this.velocity=velocity;
+        this.ballSpeed=ballSpeed;
         this.width=width;
-        ballSpeed=velocity;
 
     }
     public void paint(Graphics g){

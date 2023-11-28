@@ -13,19 +13,22 @@ public class Gameplay extends JPanel{
     Quiz quiz;
     Menu menu;
     StartScreen start;
+    EndScreen end;
     boolean gameStarted;
-    boolean gameOver;
     static boolean menuChosen;
+    static boolean quizStarted;
+    static boolean gameOver;
     public Gameplay(){
-        ball = new Ball((Const.SCREEN_WIDTH/2)-Const.BALL_WIDTH-15,(Const.SCREEN_HEIGHT/2)-3*Const.BALL_WIDTH-15,2,2,2,Const.BALL_WIDTH);
-        player1 = new Racket(0,(Const.SCREEN_HEIGHT/2)-Const.RACKET_HEIGHT-10,1);
-        player2 = new Racket(Const.SCREEN_WIDTH-Const.RACKET_WIDTH-14,(Const.SCREEN_HEIGHT/2)-Const.RACKET_HEIGHT-10,2);
+        ball = new Ball(600,422,2,2,2,25);
+        player1 = new Racket(0,372,1);
+        player2 = new Racket(1246,372,2);
         score = new Score();
         quiz = new Quiz();
         start = new StartScreen();
+        end = new EndScreen();
         menu = new Menu();
         gameStarted = false;
-        gameOver = false;
+        quizStarted = false;
         menuChosen = false;
         this.setFocusable(true);
         this.requestFocusInWindow();
@@ -34,16 +37,20 @@ public class Gameplay extends JPanel{
     }
     public void paintComponent(Graphics g){
         g.setColor(Color.BLACK);
-        g.fillRect(0,0,Const.SCREEN_WIDTH,Const.SCREEN_HEIGHT);
+        g.fillRect(0,0,1280,1024);
         if (gameStarted) {
-            if (gameOver) {
-                quiz.paint(g);
-            } else {
+            if (quizStarted) {
+                if (gameOver) {
+                    end.paint(g);
+                }else{
+                    quiz.paint(g);
+                }
+            }else{
                 if(menuChosen) {
                     menu.paint(g);
                 }else{
                     g.setColor(Color.white);
-                    g.drawLine((Const.SCREEN_WIDTH/2)-30,0,(Const.SCREEN_WIDTH/2)-30,Const.SCREEN_HEIGHT);
+                    g.drawLine(610,0,610,1024);
                     ball.paint(g);
                     player1.paint(g);
                     player2.paint(g);
@@ -68,11 +75,11 @@ public class Gameplay extends JPanel{
         player2.boundaries_top_bottom(0,655);
         player1.move();
         player2.move();
-        winCondition(0,Const.SCREEN_WIDTH-Const.BALL_WIDTH,score);
+        winCondition(0,1247,score);
     }
     public void winCondition(int leftside, int rightside,Score score){
         if (score.score1 == 10 || score.score2 == 10) {
-            gameOver = true;
+            quizStarted = true;
         } else {
             if (ball.xCoords < leftside) {
                 score.score2++;
@@ -85,9 +92,9 @@ public class Gameplay extends JPanel{
         }
     }
     public static void newRound(){
-        ball = new Ball((Const.SCREEN_WIDTH/2)-Const.BALL_WIDTH,(Const.SCREEN_HEIGHT/2)-Const.BALL_WIDTH,2,2,2,Const.BALL_WIDTH);
-        player1 = new Racket(0,(Const.SCREEN_HEIGHT/2)-Const.RACKET_HEIGHT,1);
-        player2 = new Racket(Const.SCREEN_WIDTH-Const.RACKET_WIDTH-14,(Const.SCREEN_HEIGHT/2)-Const.RACKET_HEIGHT,2);
+        ball = new Ball(600,422,2,2,2,25);
+        player1 = new Racket(0,372,1);
+        player2 = new Racket(1246,372,2);
     }
     public class Listener extends KeyAdapter{
         @Override
@@ -111,7 +118,15 @@ public class Gameplay extends JPanel{
             if (!gameStarted) {
                 gameStarted = true;
             }
-            menu.mouseClicked(e);
+            if(menuChosen) {
+                menu.mouseClicked(e);
+            }
+            if(quizStarted) {
+                quiz.mouseClicked(e);
+            }
+            if(gameOver) {
+                end.mouseClicked(e);
+            }
         }
     }
 }
