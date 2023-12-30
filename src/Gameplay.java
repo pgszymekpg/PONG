@@ -149,7 +149,7 @@ public class Gameplay extends JPanel{
      * Metoda odpowiadająca za aktualizowanie stanu piłki,paletek oraz warunku wygranej
      */
     public void refresh(){
-        ball.boundaries_top_bottom(0,Const.SCREEN_HEIGHT-Const.BALL_WIDTH);
+        ball.boundaries_top_bottom(0,Const.SCREEN_HEIGHT-Const.BALL_WIDTH-35);
         ball.move();
         player2.boundaries_ball(ball);
         player1.boundaries_ball(ball);
