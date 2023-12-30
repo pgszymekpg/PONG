@@ -61,9 +61,9 @@ public class Gameplay extends JPanel{
      * Konstruktor inicializujący obiekty i ustawiający flagi
      */
     public Gameplay(){
-        ball = new Ball(600,422,2,2,2,25);
-        player1 = new Racket(0,372,1);
-        player2 = new Racket(1260,372,2);
+        ball = new Ball((Const.SCREEN_WIDTH/2)-Const.BALL_WIDTH,(Const.SCREEN_HEIGHT/2)-Const.BALL_WIDTH,2,2,2,Const.BALL_WIDTH);
+        player1 = new Racket(0,(Const.SCREEN_HEIGHT/2)-Const.RACKET_HEIGHT,1);
+        player2 = new Racket(Const.SCREEN_WIDTH-Const.RACKET_WIDTH,(Const.SCREEN_HEIGHT/2)-Const.RACKET_HEIGHT,2);
         score = new Score();
         quiz = new Quiz();
         end = new EndScreen();
@@ -84,7 +84,7 @@ public class Gameplay extends JPanel{
      */
     public void paintComponent(Graphics g){
         g.setColor(Color.BLACK);
-        g.fillRect(0,0,1280,1024); //Narysuj tło
+        g.fillRect(0,0,Const.SCREEN_WIDTH,Const.SCREEN_HEIGHT); //Narysuj tło
         if (gameStarted) {
             if (quizStarted) {
                 if (gameOver) {
@@ -101,7 +101,7 @@ public class Gameplay extends JPanel{
                 }else{
                     //Rozgrywka
                     g.setColor(Color.white);
-                    g.drawLine(610,0,610,1024); //Pionowa linia na srodku ekranu oddzielająca połowy graczy
+                    g.drawLine((Const.SCREEN_WIDTH/2)-Const.BALL_WIDTH,0,(Const.SCREEN_WIDTH/2)-Const.BALL_WIDTH,Const.SCREEN_HEIGHT); //Pionowa linia na srodku ekranu oddzielająca połowy graczy
                     refresh();
                     ball.paint(g);
                     player1.paint(g);
@@ -149,23 +149,23 @@ public class Gameplay extends JPanel{
      * Metoda odpowiadająca za aktualizowanie stanu piłki,paletek oraz warunku wygranej
      */
     public void refresh(){
-        ball.boundaries_top_bottom(0,804);
+        ball.boundaries_top_bottom(0,Const.SCREEN_HEIGHT-Const.BALL_WIDTH);
         ball.move();
         player2.boundaries_ball(ball);
         player1.boundaries_ball(ball);
-        player1.boundaries_top_bottom(0,694);
-        player2.boundaries_top_bottom(0,694);
+        player1.boundaries_top_bottom(0,Const.SCREEN_HEIGHT-Const.RACKET_HEIGHT);
+        player2.boundaries_top_bottom(0,Const.SCREEN_HEIGHT-Const.RACKET_HEIGHT);
         player1.move();
         player2.move();
-        winCondition(0,1260,score);
+        winCondition(0,Const.SCREEN_WIDTH-Const.RACKET_WIDTH,score);
     }//end refresh()
     /**
      * Metoda rozpoczynające nową rundę rozgrywki
      */
     public static void newRound(){
-        ball = new Ball(600,422,2,2,2,25);
-        player1 = new Racket(0,372,1);
-        player2 = new Racket(1260,372,2);
+        ball = new Ball((Const.SCREEN_WIDTH/2)-Const.BALL_WIDTH,(Const.SCREEN_HEIGHT/2)-Const.BALL_WIDTH,2,2,2,Const.BALL_WIDTH);
+        player1 = new Racket(0,(Const.SCREEN_HEIGHT/2)-Const.RACKET_HEIGHT,1);
+        player2 = new Racket(Const.SCREEN_WIDTH-Const.RACKET_WIDTH,(Const.SCREEN_HEIGHT/2)-Const.RACKET_HEIGHT,2);
     }//end newRound()
     /**
      * Metoda odtwarzająca dźwięk z pliku zewnętrznego

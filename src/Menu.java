@@ -15,12 +15,12 @@ public class Menu implements MouseListener {
     public void paint(Graphics g) {
         g.setColor(Color.WHITE);
         g.setFont(new Font("Courier New", Font.PLAIN, 80));
-        g.drawString("Menu", 515, 212);
+        g.drawString("Menu", 515, (Const.SCREEN_HEIGHT/2)-300);
         g.setFont(new Font("Courier New", Font.PLAIN, 60));
         //Opcje wznowienia, rozpoczęcia na nowo lub wyjścia
-        g.drawString("Resume", 515, 412);
-        g.drawString("Restart", 515, 512);
-        g.drawString("Quit", 515, 612);
+        g.drawString("Resume", 515, (Const.SCREEN_HEIGHT/2)-100);
+        g.drawString("Restart", 515, Const.SCREEN_HEIGHT/2);
+        g.drawString("Quit", 515, (Const.SCREEN_HEIGHT/2)+100);
     }//end paint()
     /**
      * Metoda sprawdzająca czy użytkownik nacisnął przycisk ESC
@@ -51,11 +51,11 @@ public class Menu implements MouseListener {
         int mouseX = e.getX();
         int mouseY = e.getY();
         //Sprawdzenie czy kursor znajduje się w obszarze opcji "Resume"
-        if (mouseOver(mouseX, mouseY, 412)) {
+        if (mouseOver(mouseX, mouseY, (Const.SCREEN_HEIGHT/2)-100)) {
             Gameplay.menuChosen = false; //Reset flagi wybrania menu
         }
         //Sprawdzenie czy kursor znajduje się w obszarze opcji "Restart"
-        else if (mouseOver(mouseX, mouseY, 512)) {
+        else if (mouseOver(mouseX, mouseY, Const.SCREEN_HEIGHT/2)) {
             //Reset wyników
             Score.score1 = 0;
             Score.score2 = 0;
@@ -64,7 +64,7 @@ public class Menu implements MouseListener {
             Gameplay.soundFile(new File("src\\sounds\\whistle.wav"));
         }
         //Sprawdzenie czy kursor znajduje się w obszarze opcji "Quit"
-        else if (mouseOver(mouseX, mouseY, 612)) {
+        else if (mouseOver(mouseX, mouseY, (Const.SCREEN_HEIGHT/2)+100)) {
             //Zamknięcie aplikacji
             System.exit(0);
         }

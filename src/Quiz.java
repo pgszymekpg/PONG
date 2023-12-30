@@ -73,9 +73,9 @@ public class Quiz implements MouseListener {
         g.setFont(new Font("Courier New", Font.PLAIN, 35));
         g.drawString(questions[index], 90, 150);
         g.setFont(new Font("Courier New", Font.PLAIN, 30));
-        g.drawString("A. " + allAnswers[index][0], 90, 312);
-        g.drawString("B. " + allAnswers[index][1], 90, 512);
-        g.drawString("C. " + allAnswers[index][2], 90, 712);
+        g.drawString("A. " + allAnswers[index][0], 90, (Const.SCREEN_HEIGHT/2)-100);
+        g.drawString("B. " + allAnswers[index][1], 90, (Const.SCREEN_HEIGHT/2)+100);
+        g.drawString("C. " + allAnswers[index][2], 90, (Const.SCREEN_HEIGHT/2)+300);
     }//end paint()
     /**
      * Metoda sprawdzająca czy wybrana odpowiedź jest poprawna
@@ -109,7 +109,7 @@ public class Quiz implements MouseListener {
      * @return true gdy kursor znajduje się w obszarze danej opcji
      */
     boolean mouseOver(int mouseX, int mouseY, int optionY) {
-        return mouseX >= 90 && mouseX <= 1280 && mouseY >= optionY - 40 && mouseY <= optionY + 20;
+        return mouseX >= 90 && mouseX <= Const.SCREEN_WIDTH && mouseY >= optionY - 40 && mouseY <= optionY + 20;
     }//end mouseOver()
     /**
      * Obsługa zdarzenia kliknięcia myszy
@@ -121,19 +121,19 @@ public class Quiz implements MouseListener {
         int mouseX = e.getX();
         int mouseY = e.getY();
         //Sprawdzenie czy kursor znajduje się w obszarze odpowiedzi A
-        if (mouseOver(mouseX, mouseY, 312)) {
+        if (mouseOver(mouseX, mouseY, (Const.SCREEN_HEIGHT/2)-100)) {
             //Przypisz zmiennej odpowiedz A i wywołaj metodę sprawdzająca poprawną odpowiedź
             guess = 'A';
             checkAnswer();
         }
         //Sprawdzenie czy kursor znajduje się w obszarze odpowiedzi B
-        else if (mouseOver(mouseX, mouseY, 512)) {
+        else if (mouseOver(mouseX, mouseY, (Const.SCREEN_HEIGHT/2)+100)) {
             //Przypisz zmiennej odpowiedz B i wywołaj metodę sprawdzająca poprawną odpowiedź
             guess = 'B';
             checkAnswer();
         }
         //Sprawdzenie czy kursor znajduje się w obszarze odpowiedzi C
-        else if (mouseOver(mouseX, mouseY, 712)) {
+        else if (mouseOver(mouseX, mouseY, (Const.SCREEN_HEIGHT/2)+300)) {
             //Przypisz zmiennej odpowiedz C i wywołaj metodę sprawdzająca poprawną odpowiedź
             guess = 'C';
             checkAnswer();

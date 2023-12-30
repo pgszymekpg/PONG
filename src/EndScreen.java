@@ -26,8 +26,8 @@ public class EndScreen implements MouseListener {
         }
         //Opcje rozpoczęcia na nowo lub wyjścia
         g.setFont(new Font("Courier New", Font.PLAIN, 60));
-        g.drawString("Restart", 515, 412);
-        g.drawString("Quit", 515, 512);
+        g.drawString("Restart", 515, Const.SCREEN_HEIGHT/2);
+        g.drawString("Quit", 515, (Const.SCREEN_HEIGHT/2)+100);
     }//end paint()
     /**
      * Metoda sprawdzająca czy użytkownik najechał myszą na konkretną opcję
@@ -49,7 +49,7 @@ public class EndScreen implements MouseListener {
         int mouseX = e.getX();
         int mouseY = e.getY();
         //Sprawdzenie czy kursor znajduje się w obszarze opcji "Restart"
-        if (mouseOver(mouseX, mouseY, 412)) {
+        if (mouseOver(mouseX, mouseY, Const.SCREEN_HEIGHT/2)) {
             //Reset wyników
             Score.score1 = 0;
             Score.score2 = 0;
@@ -60,7 +60,7 @@ public class EndScreen implements MouseListener {
             Gameplay.soundFile(new File("src\\sounds\\whistle.wav")); //odtworzenie dźwięku rozpoczynającego
         }
         //Sprawdzenie czy kursor znajduje się w obszarze opcji "Quit"
-        else if (mouseOver(mouseX, mouseY, 512)) {
+        else if (mouseOver(mouseX, mouseY, (Const.SCREEN_HEIGHT/2)+100)) {
             //Zamknięcie aplikacji
             System.exit(0);
         }
