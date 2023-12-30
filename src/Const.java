@@ -22,5 +22,5 @@ public class Const {
     /**
      * Wysokość paletki
      */
-    static final int RACKET_HEIGHT = 100;
+    static final int RACKET_HEIGHT = 120;
 }

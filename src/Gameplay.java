@@ -62,8 +62,8 @@ public class Gameplay extends JPanel{
      */
     public Gameplay(){
         ball = new Ball((Const.SCREEN_WIDTH/2)-Const.BALL_WIDTH,(Const.SCREEN_HEIGHT/2)-Const.BALL_WIDTH,2,2,2,Const.BALL_WIDTH);
-        player1 = new Racket(0,(Const.SCREEN_HEIGHT/2)-Const.RACKET_HEIGHT,1);
-        player2 = new Racket(Const.SCREEN_WIDTH-Const.RACKET_WIDTH,(Const.SCREEN_HEIGHT/2)-Const.RACKET_HEIGHT,2);
+        player1 = new Racket(0,(Const.SCREEN_HEIGHT/2)-(Const.RACKET_HEIGHT/2),1);
+        player2 = new Racket(Const.SCREEN_WIDTH-Const.RACKET_WIDTH,(Const.SCREEN_HEIGHT/2)-(Const.RACKET_HEIGHT/2),2);
         score = new Score();
         quiz = new Quiz();
         end = new EndScreen();

@@ -17,7 +17,7 @@ public class Main {
     public static void main(String[] args) {
         Gameplay game = new Gameplay(); //utwórz obiekt klasy Gameplay zarządzający logiką gry
         frame.setSize(Const.SCREEN_WIDTH,Const.SCREEN_HEIGHT); //ustaw wymiary okna
-        //frame.setResizable(false); //blokuj możliwość zmiany rozmiaru okna
+        frame.setResizable(false); //blokuj możliwość zmiany rozmiaru okna
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); //zamknięcie głównego okna powoduje zakończenie działania aplikacji
         frame.add(game); // dodaj obiekt klasy Gameplay do okna głownego
         frame.setVisible(true); //ustaw głowne okno jako widoczne dla użytkownika

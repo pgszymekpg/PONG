@@ -44,11 +44,11 @@ public class Racket{
     public void paint(Graphics g){
         if(id==1){
             g.setColor(Color.CYAN);
-            g.fillRect(xCoords,yCoords,20,130);
+            g.fillRect(xCoords,yCoords,Const.RACKET_WIDTH,Const.RACKET_HEIGHT);
         }
         else if(id==2){
             g.setColor(Color.GREEN);
-            g.fillRect(xCoords,yCoords,20,130);
+            g.fillRect(xCoords,yCoords,Const.RACKET_WIDTH,Const.RACKET_HEIGHT);
         }
     }//end paint()
     /**
@@ -118,8 +118,8 @@ public class Racket{
      */
     public void boundaries_ball(Ball ball) {
         //Czy koordynaty (x,y) piłki zawierają się między koordynatami (x,y) paletki oraz nie zarejestrowano odbicia piłki od paletki
-        if (!ballHit && ball.xCoords + ball.width  >= xCoords && ball.xCoords  <= xCoords+ 20) {
-            if (ball.yCoords + ball.width >= yCoords && ball.yCoords  <= yCoords + 130) {
+        if (!ballHit && ball.xCoords + ball.width  >= xCoords && ball.xCoords  <= xCoords + Const.RACKET_WIDTH) {
+            if (ball.yCoords + ball.width >= yCoords && ball.yCoords  <= yCoords + Const.RACKET_HEIGHT) {
                 ballHit = true; //ustaw flagę odbicia piłki od paletki
                 ball.xChange *= -1; //zmiana znaku koordynatów piłki z (x,y) na (-x,y)
                 ball.ballSpeed +=0.6; //zwiększenie prędkości piłki
